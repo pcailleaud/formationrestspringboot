@@ -31,4 +31,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return null;
 	}
 
+	@Override
+	public String create(Restaurant restaurant) {
+		return restoRepository.save(restaurant).getId();
+	}
+
 }
