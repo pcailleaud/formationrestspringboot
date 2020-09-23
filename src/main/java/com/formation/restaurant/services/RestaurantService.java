@@ -10,4 +10,8 @@ public interface RestaurantService {
 
 	public Restaurant findById(String id);
 
+	public String create(Restaurant restaurant);
+
+	public void update(String identifiant, Restaurant restaurant);
+
 }

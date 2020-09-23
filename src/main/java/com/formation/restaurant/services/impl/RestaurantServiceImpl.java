@@ -31,4 +31,15 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return null;
 	}
 
+	@Override
+	public String create(Restaurant restaurant) {
+		return restoRepository.save(restaurant).getId();
+	}
+
+	@Override
+	public void update(String identifiant, Restaurant restaurant) {
+		restaurant.setId(identifiant);
+		restoRepository.save(restaurant);
+	}
+
 }
