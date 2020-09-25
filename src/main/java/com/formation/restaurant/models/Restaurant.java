@@ -1,8 +1,13 @@
 package com.formation.restaurant.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -15,10 +20,11 @@ public class Restaurant {
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String id;
-	
 	private String nom;
-	
 	private String adresse;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<Menu> menus = new HashSet<Menu>();
 
 	public String getId() {
 		return id;
@@ -42,6 +48,14 @@ public class Restaurant {
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
+	}
+
+	public Set<Menu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(Set<Menu> menus) {
+		this.menus = menus;
 	}
 	
 }
