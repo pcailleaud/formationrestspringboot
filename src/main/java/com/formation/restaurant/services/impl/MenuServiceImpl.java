@@ -1,6 +1,5 @@
 package com.formation.restaurant.services.impl;
 
-import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +42,4 @@ public class MenuServiceImpl implements MenuService {
 		return menuEntity.getIdentifiant();
 	}
 
-	@Override
-	public void update(String id, Menu menu) {
-		menu.setIdentifiant(id);
-		menuRepository.save(menu);
-	}
-	
 }
