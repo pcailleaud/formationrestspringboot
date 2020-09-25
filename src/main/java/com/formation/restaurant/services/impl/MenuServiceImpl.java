@@ -72,15 +72,4 @@ public class MenuServiceImpl implements MenuService {
 		menuRepository.save(menuToUpdate);
 	}
 
-	@Override
-	public void deleteById(String idRestaurant, String idMenu) {
-		Restaurant restoToUpdate = restoRepository.findById(idRestaurant).get();
-		Set<Menu> menus = restoToUpdate.getMenus();
-		Menu menu = menus.stream().filter(m -> m.getIdentifiant().equals(idMenu)).findFirst().get();
-		menus.remove(menu);
-		restoToUpdate.setMenus(menus);
-		restoRepository.save(restoToUpdate);
-		menuRepository.delete(menu);
-	}
-
 }

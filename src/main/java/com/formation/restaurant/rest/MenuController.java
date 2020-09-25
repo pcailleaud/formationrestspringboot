@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,10 +62,4 @@ public class MenuController {
 		menuService.partialUpdate(id, updates);
 	}
 
-	@DeleteMapping("/restaurants/{idResto}/menus/{idMenu}")
-	public void delete(@PathVariable("idResto") String idRestaurant, @PathVariable("idMenu") String idMenu) {
-		CtrlPreconditions.checkFound(restoService.findById(idRestaurant));
-		CtrlPreconditions.checkFound(menuService.findById(idMenu));
-		menuService.deleteById(idRestaurant, idMenu);
-	}
 }

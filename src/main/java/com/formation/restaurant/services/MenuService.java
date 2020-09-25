@@ -17,6 +17,4 @@ public interface MenuService {
 
 	public void partialUpdate(String id, Map<String, Object> updates);
 
-	public void deleteById(String idRestaurant, String idMenu);
-
 }
