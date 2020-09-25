@@ -10,6 +10,4 @@ public interface MenuService {
 
 	public Menu findById(String id);
 
-	public String create(String idRestaurant, Menu menu);
-
 }

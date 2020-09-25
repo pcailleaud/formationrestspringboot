@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.formation.restaurant.dao.MenuRepository;
 import com.formation.restaurant.dao.RestaurantRepository;
 import com.formation.restaurant.models.Menu;
-import com.formation.restaurant.models.Restaurant;
 import com.formation.restaurant.services.MenuService;
 
 @Service
@@ -31,15 +30,6 @@ public class MenuServiceImpl implements MenuService {
 			return menuRepository.findById(id).get();
 		}
 		return null;
-	}
-
-	@Override
-	public String create(String idRestaurant, Menu menu) {
-		Restaurant restoEntity = restoRepository.findById(idRestaurant).get();
-		restoEntity.getMenus().add(menu);
-		restoRepository.save(restoEntity);
-		Menu menuEntity = restoEntity.getMenus().stream().filter(m -> m.equals(menu)).findFirst().get();
-		return menuEntity.getIdentifiant();
 	}
 
 }
