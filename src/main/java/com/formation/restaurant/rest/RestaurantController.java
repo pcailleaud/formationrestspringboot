@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,13 +31,20 @@ public class RestaurantController {
 	
 	@GetMapping
 	public List<Restaurant> findAll() {
-		return restoService.findAll();
+		List<Restaurant> restaurants = restoService.findAll();
+		for (Restaurant restaurant : restaurants) {
+			Link selfLink = WebMvcLinkBuilder.linkTo(RestaurantController.class).slash(restaurant.getId()).withSelfRel();
+			restaurant.add(selfLink);
+		}
+		return restaurants;
 	}
 	
 	@GetMapping("/{id}")
 	public Restaurant findById(@PathVariable("id") String identifiant) {
 		Restaurant reponse = restoService.findById(identifiant);
 		CtrlPreconditions.checkFound(reponse);
+		Link menusLink = WebMvcLinkBuilder.linkTo(RestaurantController.class).slash(reponse.getId()).slash("menus").withRel("menus");
+		reponse.add(menusLink);
 		return reponse;
 	}
 	

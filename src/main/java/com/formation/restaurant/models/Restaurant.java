@@ -11,10 +11,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.hateoas.RepresentationModel;
 
 @Table(name = "restaurants")
 @Entity
-public class Restaurant {
+public class Restaurant extends RepresentationModel<Restaurant>{
 
 	@Id
 	@GeneratedValue(generator = "system-uuid")
