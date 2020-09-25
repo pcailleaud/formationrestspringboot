@@ -1,12 +1,10 @@
 package com.formation.restaurant.rest;
 
-import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -53,13 +51,6 @@ public class MenuController {
 	public void update(@PathVariable("id") String id, @RequestBody Menu menu) {
 		CtrlPreconditions.checkFound(menuService.findById(id));
 		menuService.update(id, menu);
-	}
-
-	@PatchMapping("/menus/{id}")
-	@ResponseStatus(code = HttpStatus.OK)
-	public void partialUpdate(@PathVariable("id") String id, @RequestBody Map<String, Object> updates) {
-		CtrlPreconditions.checkFound(menuService.findById(id));
-		menuService.partialUpdate(id, updates);
 	}
 
 }

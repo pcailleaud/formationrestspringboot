@@ -1,6 +1,5 @@
 package com.formation.restaurant.services;
 
-import java.util.Map;
 import java.util.Set;
 
 import com.formation.restaurant.models.Menu;
@@ -14,7 +13,5 @@ public interface MenuService {
 	public String create(String idRestaurant, Menu menu);
 
 	public void update(String id, Menu menu);
-
-	public void partialUpdate(String id, Map<String, Object> updates);
 
 }

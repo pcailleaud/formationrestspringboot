@@ -48,28 +48,5 @@ public class MenuServiceImpl implements MenuService {
 		menu.setIdentifiant(id);
 		menuRepository.save(menu);
 	}
-
-	@Override
-	public void partialUpdate(String id, Map<String, Object> updates) {
-		Menu menuToUpdate = menuRepository.findById(id).get();
-		for (String key : updates.keySet()) {
-			switch (key) {
-			case "entrees": {
-				menuToUpdate.setEntrees((String) updates.get(key));
-				break;
-			}
-			case "plats": {
-				menuToUpdate.setPlats((String) updates.get(key));
-				break;
-			}
-			case "desserts": {
-				menuToUpdate.setDesserts((String) updates.get(key));
-				break;
-			}
-			}
-			
-		}
-		menuRepository.save(menuToUpdate);
-	}
-
+	
 }
